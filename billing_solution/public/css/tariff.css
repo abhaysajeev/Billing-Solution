@@ -1,0 +1,142 @@
+/* General Reset for Header and Footer Visibility */
+.navbar.navbar-light.navbar-expand-lg {
+    display: none !important;
+}
+
+.navbar, .page-header, footer {
+    display: none !important;
+}
+
+.navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+    display: block !important;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-header {
+    background-color: #202020; /* Dark background */
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    padding: 1rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Form Styling */
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem 0.75rem;
+    height: 38px;
+    width: 100%;
+}
+
+.form-label-col {
+    font-weight: 600;
+}
+
+/* Responsive Form Layout */
+@media (max-width: 992px) {
+    .form-label-col {
+        margin-bottom: 0.5rem;
+    }
+    
+    .input-col {
+        width: 100%;
+    }
+    
+    .divider-col {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+}
+
+/* Table Styling */
+.table-responsive {
+    margin: 0 -1rem;  /* Negative margin for small screens */
+    padding: 0 1rem;
+    width: calc(100% + 2rem);
+}
+
+.table {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 12px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.table td {
+    background-color: #fff;
+}
+
+/* Button Styling */
+.btn {
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+}
+
+.btn-outline-secondary {
+    color: #495057;
+    border: 1px solid #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Responsive Table Updates */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .table th, .table td {
+        white-space: nowrap;
+        min-width: 100px;
+    }
+    
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Utility Classes */
+.w-auto-sm {
+    width: auto !important;
+}
+
+@media (max-width: 576px) {
+    .w-auto-sm {
+        width: 100% !important;
+    }
+}
+
+/* Action Button Group */
+.d-flex .btn {
+    margin-right: 0.5rem;
+}
+
+.d-flex .btn:last-child {
+    margin-right: 0;
+}

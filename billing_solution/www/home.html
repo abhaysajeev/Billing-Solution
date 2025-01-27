@@ -1,0 +1,137 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+    {% include "billing_solution/templates/includes/navbar.html" %}
+    <style>
+
+        .navbar.navbar-light.navbar-expand-lg {
+            display: none !important;
+        }
+
+        /* Keep your custom navbar visible */
+        .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+            display: block !important;
+        }
+        .navbar, .page-header, footer {
+        display: none !important;
+        }
+        body {
+            background-color: #eef3f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .btn-custom {
+            padding: 0.4rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-new-customer {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+        }
+
+        .btn-new-customer:hover {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            transform: translateY(-2px);
+            color: white;
+        }
+        .btn-consumer-list {
+            background: linear-gradient(135deg, #ef4444, #dc2626); /* Red gradient */
+            color: white;
+        }
+
+        .btn-consumer-list:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c); /* Darker red gradient */
+            transform: translateY(-2px);
+        color: white;
+        }
+
+        .btn-bill {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-bill:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-report {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .btn-report:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-tariff {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed); /* Purple gradient */
+            color: white;
+        }
+
+        .btn-tariff:hover {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9); /* Darker purple gradient */
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .dashboard-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-custom {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <div class="dashboard-container">
+        <div class="text-center">
+            <h1 class="mb-5 fw-bold text-dark">Welcome to Your Dashboard</h1>
+            <div class="dashboard-buttons">
+                <button class="btn btn-md btn-custom btn-new-customer" onclick="window.location.href='/new-consumer/new'">
+                    New Consumer
+                </button>
+                <button class="btn btn-md btn-custom btn-consumer-list" onclick="window.location.href='/new-consumer/list'">
+                    Consumer List
+                </button>
+                <button class="btn btn-md btn-custom btn-bill" onclick="window.location.href='/app/Bill'">
+                    Bill
+                </button>
+                <button class="btn btn-md btn-custom btn-report" onclick="window.location.href='/app/Report'">
+                    Report
+                </button>
+                <button class="btn btn-md btn-custom btn-tariff" onclick="window.location.href='/tariff'">
+                    Tariff
+                </button>                
+            </div>
+        </div>
+    </div>
+{% endblock %}

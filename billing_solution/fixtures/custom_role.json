@@ -1,0 +1,31 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Role",
+  "modified": "2025-01-03 09:19:36.486589",
+  "name": "kphi97r58i",
+  "page": null,
+  "ref_doctype": "GL Entry",
+  "report": "UAE VAT 201",
+  "roles": [
+   {
+    "parent": "kphi97r58i",
+    "parentfield": "roles",
+    "parenttype": "Custom Role",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "kphi97r58i",
+    "parentfield": "roles",
+    "parenttype": "Custom Role",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "kphi97r58i",
+    "parentfield": "roles",
+    "parenttype": "Custom Role",
+    "role": "Auditor"
+   }
+  ]
+ }
+]

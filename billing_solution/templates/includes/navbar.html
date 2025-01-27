@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Basic styling for the navbar */
+        .navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+            background-color: #ffffff; /* white background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* light shadow for the navbar */
+            padding: 10px 20px; /* padding for spacing */
+        }
+
+        /* Navbar brand (Dashboard) */
+        .navbar-brand.fw-bold {
+            font-weight: bold; /* make the brand name bold */
+            font-size: 1.2rem; /* slightly larger font size */
+            color: #333; /* dark color for the brand name */
+            text-transform: uppercase; /* uppercase letters for a strong brand appearance */
+        }
+
+        /* Log In/Log Out button styling */
+        .btn.btn-custom.btn-logout {
+            background-color: #007bff; /* blue background */
+            color: #fff; /* white text */
+            border-radius: 12px; /* rounded corners for the button */
+            padding: 6px 14px; /* smaller padding inside the button */
+            font-size: 0.875rem; /* smaller font size */
+            transition: background-color 0.3s ease; /* smooth background change on hover */
+        }
+
+        /* Button hover effect */
+        .btn-custom.btn-logout:hover {
+            background-color: #0056b3; /* dark blue background on hover */
+            text-decoration: none; /* remove underline on hover */
+        }
+
+        /* Adjust button display for mobile devices */
+        @media (max-width: 768px) {
+            .navbar-brand.fw-bold {
+                font-size: 1.25rem; /* slightly smaller brand name on mobile */
+            }
+
+            .btn-custom.btn-logout {
+                margin-top: 10px; /* Add space above the button on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/home">Dashboard</a>
+            {% if frappe.session.user == "Guest" %}
+               <button class="btn btn-custom btn-logout" onclick="window.location.href='/login'">Log In</button>
+            {% else %}
+            <a class="btn btn-custom btn-logout" id="logout-button">Log Out</a>
+            {% endif %}
+           </div>
+    </nav>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('logout-button')?.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+
+            // Make the API call to logout
+            fetch('/api/method/logout', {
+                method: 'POST',
+                headers: {
+                            'Content-Type': 'application/json',
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                            },
+                credentials: 'include' // Include cookies for session-based authentication
+
+            })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    // Logout successful
+                    
+                    // console.log('Logged out successfully');
+
+                    // Redirect to login page or show a success message
+                    window.location.href = '/login'; // Change this to your login page URL
+                } else {
+                    // Handle errors
+                    console.error('Logout failed:', response.statusText);
+                    alert('Logout failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error during logout:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

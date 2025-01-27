@@ -1,0 +1,143 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+
+
+
+    <style>
+        /* Hide default navbar, header, and footer */
+        .navbar.navbar-light.navbar-expand-lg {
+            display: none !important;
+        }
+
+        .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+            display: block !important;
+        }
+
+        .navbar, .page-header, footer {
+            display: none !important;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 380px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-card h4 {
+            font-size: 24px;
+            color: #36414C;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 12px;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border-radius: 12px;
+            padding: 1.2rem 2.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #e3342f;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <!-- Login Page Content -->
+    <div class="login-container">
+        <div class="login-card">
+            <h4>{{ _("Login") }}</h4>
+            <!-- Error message container -->
+            <div id="error-message" class="error-message" style="display: none;"></div>
+
+            <form class="form-signin form-login" role="form">
+                <div class="form-group">
+                    <input type="text" id="login_email" class="form-control" placeholder="{{ _('Username') }}" required autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="login_password" class="form-control" placeholder="{{ _('Password') }}" required>
+                </div>
+                <button class="btn btn-login" type="submit">{{ _("Login") }}</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        frappe.ready(function() {
+            // Bind to form submit
+            $('.form-login').on('submit', function(e) {
+                e.preventDefault();
+                
+                var args = {
+                    usr: $('#login_email').val(),
+                    pwd: $('#login_password').val(),
+                    device: "desktop"
+                };
+                
+                frappe.call({
+                    type: "POST",
+                    args: args,
+                    method: "login",
+                    callback: function(r) {
+                        if (r.exc) {
+                            $('#error-message').text("Invalid Login. Please try again.").show();
+                            return;
+                        }
+                        window.location.href = "/home.html";  // Redirect to home
+                    },
+                    freeze: true,
+                    freeze_message: __("Logging in...")
+                });
+                
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

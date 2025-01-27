@@ -10,6 +10,7 @@ app_license = "mit"
 
 # required_apps = []
 
+
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
@@ -27,6 +28,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/billing_solution/css/billing_solution.css"
 # app_include_js = "/assets/billing_solution/js/billing_solution.js"
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/billing_solution/css/billing_solution.css"
@@ -241,4 +243,37 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+fixtures = [
+    "Client Script",
+    "Server Script",
+    "Custom Field",
+    "Property Setter",
+    "Print Format",
+    # "DocType",
+    "Report",
+    "Letter Head",
+    "Workflow",
+    "Workflow State",
+    "Workflow Action",
+    "Workflow Action Master",
+    # Additional fields
+    {"dt": "Custom DocPerm"},
+    {"dt": "Role"},
+    {"dt": "Custom Role"},
+    {"dt": "Module Def"},
+    {"dt": "Translation"},
+    {"dt": "Portal Menu Item"},
+    {"dt": "Web Page"},
+    {"dt": "Web Form"},
+    {"dt": "Notification"},
+    # {"dt": "Email Alert"},
+    {"dt": "Email Template"},
+    #{"dt": "Dashboard"},
+     {"dt": "Dashboard",
+        "filters": [["is_standard", "=", "0"]],
+        "ignore_version": 1},
+    {"dt": "Dashboard Chart"},
+    {"dt": "User Permission"}
+]
 
