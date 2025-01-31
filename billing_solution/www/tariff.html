@@ -124,6 +124,24 @@
     background: #f8fafc;
     cursor: not-allowed;
 }
+.form-select {
+    height: auto;              /* Remove fixed height */
+    min-height: 38px;         /* Minimum height to match your design */
+    padding: 0.375rem 0.75rem; /* Standard padding */
+    appearance: auto;         /* Show the native dropdown arrow */
+    -webkit-appearance: auto; /* For Safari */
+}
+
+/* Ensure the selected option is fully visible */
+.form-select option {
+    padding: 0.375rem 0.75rem;
+}
+
+/* Improve dropdown arrow spacing */
+.form-select:not([multiple]) {
+    padding-right: 2.25rem;    /* Space for dropdown arrow */
+    background-position: right 0.75rem center;
+}
 
 /* Responsive adjustments */
 @media (max-width: 640px) {

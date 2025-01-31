@@ -1,0 +1,299 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    /* Hide default navbar, header, and footer */
+    .navbar, .page-header, footer {
+        display: none !important;
+    }
+    .chat-bubble {
+        display: none !important;
+    }
+
+    body {
+        background: linear-gradient(135deg, #eef2ff, #f5f7ff);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .login-page {
+        display: flex;
+        width: 100%;
+        max-width: 900px;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        margin: 2rem;
+    }
+
+    .left-section {
+        flex: 1;
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        color: white;
+        padding: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .left-section h1 {
+        font-size: 2.75rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .left-section p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        opacity: 0.9;
+        margin: 0;
+    }
+
+    .right-section {
+        flex: 1;
+        padding: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-card h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .form-control {
+        width: 100%;
+        height: 46px;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #6366f1;
+        background-color: #f8fafc;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-control::placeholder {
+        color: #9ca3af;
+    }
+
+    .btn-login {
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        height: 46px;
+        color: white;
+        border-radius: 12px;
+        padding: 0 2rem;
+        font-weight: 600;
+        font-size: 1rem;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .btn-login:hover {
+        background: linear-gradient(135deg, #4f46e5, #4338ca);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+    
+
+    .error-message {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        text-align: center;
+        padding: 0.75rem;
+        border-radius: 8px;
+        background-color: #fef2f2;
+        display: none;
+    }
+    .input-group {
+    position: relative;
+}
+
+.eye-button {
+    position: absolute;
+    right: 10px; /* Adjust this value to position the icon */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    z-index: 2; /* Ensure the icon is above the input field */
+}
+
+.eye-button button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.eye-button i {
+    color: #6c757d; /* Adjust the icon color */
+}
+    
+    
+    
+
+    @media (max-width: 768px) {
+        .login-page {
+            flex-direction: column;
+            margin: 0;
+            border-radius: 12px;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .left-section {
+        display: none;  /* This will hide the paragraph */
+    }
+
+        .left-section, .right-section {
+            padding: 3rem 2rem;
+        }
+
+        .left-section h1 {
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .login-card {
+            max-width: 100%;
+        }
+    }
+</style>
+
+    <!-- Login Page Content -->
+    <div class="login-page">
+        <!-- Left Section: Header and Description -->
+        <div class="left-section">
+            <h1 class="text-white">Billing Solution</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
+
+        <!-- Right Section: Login Form -->
+        <div class="right-section">
+            <div class="login-card">
+                <h2>Login</h2>
+                <!-- Error message container -->
+                <div id="error-message" class="error-message"></div>
+
+                <form class="form-signin form-login" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" id="login_email" class="form-control" placeholder="Username or Email" required autofocus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span> <!-- Lock icon -->
+                            </div>
+                            <input type="password" id="login_password" class="form-control" placeholder="Password" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text eye-button">
+                                    <button class="btn btn-link p-0" type="button" id="togglePassword">
+                                        <i class="fas fa-eye-slash"></i> <!-- Eye icon -->
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-login" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        frappe.ready(function() {
+            // Bind to form submit
+            $('.form-login').on('submit', function(e) {
+                e.preventDefault();
+
+                var username = $('#login_email').val();
+                var password = $('#login_password').val();
+
+                // Basic validation
+                if (!username || !password) {
+                    $('#error-message').text("Please enter both username and password.").show();
+                    return;
+                }
+
+                var args = {
+                    usr: username,
+                    pwd: password,
+                    device: "desktop"
+                };
+
+                frappe.call({
+                    type: "POST",
+                    args: args,
+                    method: "login",
+                    callback: function(r) {
+                        if (r.exc) {
+                            $('#error-message').text("Invalid username or password. Please try again.").show();
+                            return;
+                        }
+                        window.location.href = "/home.html";  // Redirect to home
+                    },
+                    freeze: true,
+                    freeze_message: __("Logging in...")
+                });
+
+                return false;
+            });
+
+            // Toggle password visibility
+            document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('login_password');
+            const icon = this.querySelector('i');
+
+        // Toggle password visibility
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash'); // Change icon to "eye-slash"
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye'); // Change icon back to "eye"
+        }
+    });
+        });
+    </script>
+{% endblock %}
