@@ -1,3 +1,5 @@
+import frappe
+
 app_name = "billing_solution"
 app_title = "Billing Solution"
 app_publisher = "Sil"
@@ -9,7 +11,6 @@ app_license = "mit"
 # ------------------
 
 # required_apps = []
-
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -277,3 +278,16 @@ fixtures = [
     {"dt": "User Permission"}
 ]
 
+
+def enforce_login():
+    # List of restricted URL prefixes
+    restricted_pages = ["/tariff", "/home"]
+    current_path = frappe.request.path
+
+    # If request is not for an allowed URL and user is not logged in, redirect.
+    if frappe.session.user == "Guest" and any(current_path.startswith(page) for page in restricted_pages):
+        # Append a message to the URL
+        frappe.local.flags.redirect_location = "/login?msg=Login%20Required"
+        raise frappe.Redirect
+
+before_request = [enforce_login]

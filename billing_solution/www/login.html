@@ -244,56 +244,80 @@
             // Bind to form submit
             $('.form-login').on('submit', function(e) {
                 e.preventDefault();
-
-                var username = $('#login_email').val();
-                var password = $('#login_password').val();
-
+                const username = $('#login_email').val().trim();
+                const password = $('#login_password').val().trim();
+                const errorMessage = $('#error-message');
+    
+                // Clear previous errors
+                errorMessage.hide().text('');
+    
                 // Basic validation
                 if (!username || !password) {
-                    $('#error-message').text("Please enter both username and password.").show();
+                    errorMessage.text("Please enter both username and password.").show();
                     return;
                 }
-
-                var args = {
-                    usr: username,
-                    pwd: password,
-                    device: "desktop"
-                };
-
-                frappe.call({
-                    type: "POST",
-                    args: args,
-                    method: "login",
-                    callback: function(r) {
-                        if (r.exc) {
-                            $('#error-message').text("Invalid username or password. Please try again.").show();
-                            return;
+    
+                // Show loading state
+                const btn = $(this).find('button[type="submit"]');
+                btn.prop('disabled', true).html(`
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Logging in...
+                `);
+    
+                // Make API request
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/method/login',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        usr: username,
+                        pwd: password
+                    }),
+                    success: function(response) {
+                        if (response.message === 'Logged In') {
+                            window.location.href = '/home'; // Proper redirect
+                        } else {
+                            errorMessage.text("Invalid response from server").show();
                         }
-                        window.location.href = "/home.html";  // Redirect to home
                     },
-                    freeze: true,
-                    freeze_message: __("Logging in...")
+                    error: function(xhr) {
+                        let errorText = "Invalid username or password";
+                        try {
+                            const response = JSON.parse(xhr.responseText);
+                            errorText = response.message || errorText;
+                        } catch(e) {
+                            console.error('Error parsing response:', e);
+                        }
+                        
+                        errorMessage.html(`
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            ${errorText}
+                        `).show();
+                        
+                        // Add error styling to inputs
+                        $('#login_email, #login_password').addClass('is-invalid');
+                    },
+                    complete: function() {
+                        // Reset button state
+                        btn.prop('disabled', false).text('Login');
+                        $('#login_email, #login_password').removeClass('is-invalid');
+                    }
                 });
-
-                return false;
             });
-
+    
             // Toggle password visibility
-            document.getElementById('togglePassword').addEventListener('click', function () {
-            const passwordInput = document.getElementById('login_password');
-            const icon = this.querySelector('i');
-
-        // Toggle password visibility
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash'); // Change icon to "eye-slash"
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye'); // Change icon back to "eye"
-        }
-    });
+            $('#togglePassword').click(function() {
+                const passwordInput = $('#login_password');
+                const icon = $(this).find('i');
+                
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
         });
     </script>
 {% endblock %}

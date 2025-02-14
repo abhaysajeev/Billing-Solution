@@ -1,137 +1,120 @@
 {% extends "templates/web.html" %}
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
 {% block page_content %}
-    {% include "billing_solution/templates/includes/navbar.html" %}
-    <style>
+  {% include "billing_solution/templates/includes/navbar.html" %}
+  <style>
+  /* Hide default Frappe elements */
+  .navbar.navbar-light.navbar-expand-lg {
+    display: none !important;
+  }
+  .navbar, .page-header, footer {
+    display: none !important;
+  }
+  .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+    display: block !important;
+  }
+    body {
+      background: linear-gradient(135deg, #eef2ff, #f5f7ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+    }
+    
+    .dashboard-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      color: #1f2937;
+    }
+    
+    /* Responsive grid layout for smaller icon cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    
+    /* Smaller, professional card style */
+    .dashboard-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .dashboard-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dashboard-card .card-icon {
+      font-size: 2.25rem; /* Smaller icon size */
+      margin-bottom: 0.5rem;
+      color: #4f46e5; /* Accent color similar to login page */
+    }
+    
+    .dashboard-card h3 {
+      margin: 0.25rem 0 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    
+    .dashboard-card p {
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+    }
+  </style>
+  
+  <div class="dashboard-container">
+    <!-- <h1 class="mb-4" style="font-weight:600; font-size:36px;">Admin Dashboard</h1> -->
+    <div class="card-grid">
+      <a href="/new-consumer/new" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-user"></i></div>
+        <h3>New Consumer</h3>
+        <p>Manage new entries</p>
+      </a>
+      <a href="/new-consumer/list" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>Consumer List</h3>
+        <p>View all consumers</p>
+      </a>
+      <a href="/tariff" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-sticky-note"></i></div>
+        <h3>Tariff</h3>
+        <p>Set and update rates</p>
+      </a>
+      <a href="/app/Bill" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-receipt"></i></div>
+        <h3>Bill</h3>
+        <p>Create &amp; view bills</p>
+      </a>
+      <a href="/app/Report" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Report</h3>
+        <p>Analytics &amp; insights</p>
+      </a>
 
-        .navbar.navbar-light.navbar-expand-lg {
-            display: none !important;
-        }
-
-        /* Keep your custom navbar visible */
-        .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
-            display: block !important;
-        }
-        .navbar, .page-header, footer {
-        display: none !important;
-        }
-        body {
-            background-color: #eef3f8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .dashboard-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .btn-custom {
-            padding: 0.4rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-new-customer {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-            color: white;
-        }
-
-        .btn-new-customer:hover {
-            background: linear-gradient(135deg, #4f46e5, #4338ca);
-            transform: translateY(-2px);
-            color: white;
-        }
-        .btn-consumer-list {
-            background: linear-gradient(135deg, #ef4444, #dc2626); /* Red gradient */
-            color: white;
-        }
-
-        .btn-consumer-list:hover {
-            background: linear-gradient(135deg, #dc2626, #b91c1c); /* Darker red gradient */
-            transform: translateY(-2px);
-        color: white;
-        }
-
-        .btn-bill {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .btn-bill:hover {
-            background: linear-gradient(135deg, #059669, #047857);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .btn-report {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-        }
-
-        .btn-report:hover {
-            background: linear-gradient(135deg, #d97706, #b45309);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .btn-tariff {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed); /* Purple gradient */
-            color: white;
-        }
-
-        .btn-tariff:hover {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9); /* Darker purple gradient */
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .dashboard-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            .dashboard-buttons {
-                flex-direction: column;
-            }
-            
-            .btn-custom {
-                width: 100%;
-            }
-        }
-    </style>
-
-    <div class="dashboard-container">
-        <div class="text-center">
-            <h1 class="mb-5 fw-bold text-dark">Welcome to Your Dashboard</h1>
-            <div class="dashboard-buttons">
-                <button class="btn btn-md btn-custom btn-new-customer" onclick="window.location.href='/new-consumer/new'">
-                    New Consumer
-                </button>
-                <button class="btn btn-md btn-custom btn-consumer-list" onclick="window.location.href='/new-consumer/list'">
-                    Consumer List
-                </button>
-                <button class="btn btn-md btn-custom btn-bill" onclick="window.location.href='/app/Bill'">
-                    Bill
-                </button>
-                <button class="btn btn-md btn-custom btn-report" onclick="window.location.href='/app/Report'">
-                    Report
-                </button>
-                <button class="btn btn-md btn-custom btn-tariff" onclick="window.location.href='/tariff'">
-                    Tariff
-                </button>                
-            </div>
-        </div>
     </div>
+  </div>
 {% endblock %}

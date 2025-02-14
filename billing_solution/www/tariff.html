@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tariff Page</title>
-    <link rel="stylesheet" href="/assets/billing_solution/css/tariff.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tariff Page</title>
+  <link rel="stylesheet" href="/assets/billing_solution/css/tariff.css" />
 </head>
 <body style="background-color: #eef3f8;">
 
@@ -14,414 +14,312 @@
 {% include "billing_solution/templates/includes/navbar.html" %}
 
 <style>
-    /* Hide default Frappe elements */
-    .navbar.navbar-light.navbar-expand-lg {
-        display: none !important;
-    }
-    
-    .navbar, .page-header, footer {
-        display: none !important;
-    }
-    
-    .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
-        display: block !important;
-    }
+  /* Hide default Frappe elements */
+  .navbar.navbar-light.navbar-expand-lg {
+    display: none !important;
+  }
+  .navbar, .page-header, footer {
+    display: none !important;
+  }
+  .navbar-expand-lg.navbar-light.bg-white.shadow-sm {
+    display: block !important;
+  }
 
-    /* Custom styles */
-    .form-control, .form-select {
-        border-radius: 6px;
-        border: 1px solid #dee2e6;
-        padding: 0.5rem 0.75rem;
-        height: 38px;
-    }
+  /* Custom input styles */
+  .form-control,
+  .form-select {
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem 0.75rem;
+    height: 38px;
+  }
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #5455c3;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
 
-    .form-control:focus, .form-select:focus {
-        border-color: #86b7fe;
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    }
+  /* Disable number input spinners */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
 
-    /* Disable spinners for specific inputs */
-        input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none; /* Remove spinners in WebKit browsers (Chrome, Safari, Edge) */
-        margin: 0;
-    }
+  /* Table row hover style (only on tbody rows) */
+  .table-modern tbody tr:hover {
+    background-color: #f1f5f9;
+  }
 
-    input[type="number"] {
-        -moz-appearance: textfield; /* Remove spinners in Firefox */
-        appearance: textfield; /* Standard property for modern browsers */
-    }
-    /* Table styles */
-    .table tbody tr {
-        cursor: pointer;
-    }
+  .text-muted {
+    font-size: 14px;
+  }
+  .compact-label {
+    min-width: 85px;
+    white-space: nowrap;
+    margin-right: 90px;
+  }
+  .readonly-control {
+    pointer-events: none;
+    user-select: none;
+    background-color: #fefefe;
+  }
 
-    .table tbody tr:hover {
-        background-color: rgba(0,0,0,0.075);
-    }
-    .text-muted {
-        font-size: 14px;
-    }
-    .compact-label {
-        min-width: 85px;  /* Adjust this value as needed */
-        white-space: nowrap;
-        margin-right: 90px;
-    }
-
-    .readonly-control {
-        pointer-events: none;
-        user-select: none;
-        background-color: #fefefe;
-    }
-    :root {
-    --primary-color: #2563eb;      /* Modern blue accent */
-    --surface-color: #ffffff;      /* Clean white background */
-    --border-color: #e5e7eb;       /* Subtle border color */
-    --hover-border-color: #93c5fd; /* Soft blue for interactions */
-    --focus-glow: rgba(37, 99, 235, 0.1); 
+  :root {
+    --primary-color: #6366f1;
+    --surface-color: #ffffff;
+    --border-color: #e5e7eb;
+    --hover-border-color: #93c5fd;
+    --focus-glow: rgba(37, 99, 235, 0.1);
     --transition-speed: 0.2s;
-    --rounded-md: 8px;             /* Modern rounded corners */
-}
+    --rounded-md: 8px;
+  }
 
-.form-control, .form-select {
+  .form-control,
+  .form-select {
     border: 1px solid var(--border-color);
     border-radius: var(--rounded-md);
-    padding: 0.75rem 1rem;         /* Increased padding for better touch targets */
-    font-size: 0.9375rem;          /* 15px - modern base size */
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
     background: var(--surface-color);
     transition: all var(--transition-speed) ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle depth */
-    width: 100%;                   /* Full-width for modern layouts */
-}
-
-/* Hover state */
-.form-control:hover, 
-.form-select:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+  .form-control:hover,
+  .form-select:hover {
     border-color: var(--hover-border-color);
-}
-
-/* Focus state */
-.form-control:focus, 
-.form-select:focus {
+  }
+  .form-control:focus,
+  .form-select:focus {
     border-color: var(--primary-color);
-    box-shadow: 
-        0 0 0 1px var(--primary-color),
-        0 4px 6px -1px var(--focus-glow),
-        0 2px 4px -1px var(--focus-glow);
+    box-shadow:
+      0 0 0 1px var(--primary-color),
+      0 4px 6px -1px var(--focus-glow),
+      0 2px 4px -1px var(--focus-glow);
     outline: none;
-    transform: translateY(-1px);   /* Subtle lift effect */
-}
-
-/* Modern placeholder styling */
-.form-control::placeholder {
-    color: #94a3b8;                /* Softer placeholder color */
-    opacity: 1;                    /* Fix Firefox default opacity */
-}
-
-/* Disabled state */
-.form-control:disabled,
-.form-select:disabled {
+    transform: translateY(-1px);
+  }
+  .form-control::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+  }
+  .form-control:disabled,
+  .form-select:disabled {
     background: #f8fafc;
     cursor: not-allowed;
-}
-.form-select {
-    height: auto;              /* Remove fixed height */
-    min-height: 38px;         /* Minimum height to match your design */
-    padding: 0.375rem 0.75rem; /* Standard padding */
-    appearance: auto;         /* Show the native dropdown arrow */
-    -webkit-appearance: auto; /* For Safari */
-}
-
-/* Ensure the selected option is fully visible */
-.form-select option {
+  }
+  .form-select {
+    height: auto;
+    min-height: 38px;
     padding: 0.375rem 0.75rem;
-}
-
-/* Improve dropdown arrow spacing */
-.form-select:not([multiple]) {
-    padding-right: 2.25rem;    /* Space for dropdown arrow */
+    appearance: auto;
+    -webkit-appearance: auto;
+  }
+  .form-select option {
+    padding: 0.375rem 0.75rem;
+  }
+  .form-select:not([multiple]) {
+    padding-right: 2.25rem;
     background-position: right 0.75rem center;
-}
+  }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
-    .form-control, .form-select {
-        padding: 0.625rem 0.875rem;
-        font-size: 1rem;
+  @media (max-width: 640px) {
+    .form-control,
+    .form-select {
+      padding: 0.625rem 0.875rem;
+      font-size: 1rem;
     }
-}
+  }
+  @media (max-width: 768px) {
+    .form-control,
+    .form-select {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.5rem;
+    }
+  }
 
-@media (max-width: 768px) {
-    .form-control, .form-select {
-        font-size: 0.875rem;
-        padding: 0.375rem 0.5rem;
-    }
-}
+  /* Modern Table Styling */
+  .table-modern {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+  }
+  /* Use a pastel light color for header */
+  .table-modern thead {
+    background-color: #E0F7FA;
+    color: #333;
+  }
+  .table-modern th,
+  .table-modern td {
+    padding: 0.75rem;
+  }
+  .table-modern tr.selected {
+    background-color: #e2e8f0;
+  }
 </style>
 
 <div class="container-fluid p-3 p-md-4">
-    <div class="card shadow-sm rounded-4">
-        <div class="card-header d-flex justify-content-between align-items-center p-3 rounded-top-4" style="background-color: #262626;">
-            <h5 class="text-white mb-0">Tariff</h5>
-            <button class="btn btn-sm btn-outline-light rounded-3" id="saveTariff">Save</button>
-        </div>
-        
-        <div class="card-body px-3 px-md-4 py-4">
-            <div class="row g-3">
-                <!-- Customer Type -->
-                <div class="col-12">
-                    <div class="row align-items-center">
-                        <label class="col-12 col-md-3 col-form-label">Customer Type</label>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <select class="form-select" id="customerType" data-fieldname="customer_type">
-                                <option value="DOMESTIC">Domestic</option>
-                                <option value="COMMERCIAL">Commercial</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tariff Type Checkboxes -->
-                <div class="col-12">
-                    <div class="row align-items-center">
-                        <label class="col-12 col-md-3 col-form-label">Tariff Type</label>
-                        <div class="col-12 col-md-9">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="fixed_charge_check" data-fieldname="fixed_charge_check">
-                                <label class="form-check-label" for="fixed_charge_check">Fixed Charge</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="direct_computation_check" data-fieldname="direct_computation_check">
-                                <label class="form-check-label" for="direct_computation_check">Direct Computation</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="indirect_computation_check" data-fieldname="indirect_computation_check">
-                                <label class="form-check-label" for="indirect_computation_check">InDirect Computation</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fixed Charge (Visible if C1 is checked) -->
-                <div class="col-12" id="fixedChargeField" style="display: none;">
-                    <div class="row align-items-center">
-                        <label class="col-12 col-md-3 col-form-label">Fixed Charge</label>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <input type="number" class="form-control " value="0" data-fieldname="fixed_charge">
-                        </div>
-                    </div>
-                </div>
-
-<!-- From Unit - To Unit Row (Visible if C2 is checked) -->
-<div class="col-12" id="fromToUnitField" style="display: none;">
-    <div class="row align-items-center g-3">
-        <div class="col-lg-3 col-md-2">
-            <label class="form-label">Tariff</label>
-        </div>
-        <div class="col-lg-1 col-md-2">
-            <label class="form-label compact-label ">From Unit</label>
-        </div>
-        <div class="col-lg-2 col-md-2">
-            <input type="number" class="form-control  readonly-control" value="0"  data-fieldname="from_unit" readonly>
-        </div>
-        <div class=" col-lg-1 col-md-2">
-            <label class="form-label">To Unit</label>
-        </div>
-        <div class="col-lg-2 col-md-2">
-            <input type="number" class="form-control" data-fieldname="to_unit">
-        </div>
-        <div class="col-lg-1 col-md-2"></div> <!-- Empty column for alignment -->
-        <div class="col-lg-1 col-md-2"></div> <!-- Empty column for alignment -->
+  <div class="card shadow-sm rounded-4 mt-3">
+    <div class="card-header d-flex justify-content-between align-items-center p-3 rounded-top-4" style="background-color: #6d65f4;">
+      <h5 class="text-white mb-0">Tariff</h5>
+      <button class="btn btn-sm btn-outline-light rounded-3" id="saveTariff">Save</button>
     </div>
-</div>
-
-<!-- Tariff Row (Visible if C2 is checked) -->
-<div class="container mt-4" id="tariffField" style="display: none;">
-    <div class="row align-items-center g-3">
-        <div class="col-lg-3 col-md-2"></div>
-            <div class="col-md-2 basic-amount-column" >
-                <div class="form-label-group">
-                    <input type="number" class="form-control" data-fieldname="basic_amount">
-                    <div class="form-hint text-muted ">Basic Amount</div>
-                </div>
+    
+    <div class="card-body px-3 px-md-4 py-4">
+      <div class="row g-3">
+        <!-- Customer Type -->
+        <div class="col-12">
+          <div class="row align-items-center">
+            <label class="col-12 col-md-3 col-form-label">Customer Type</label>
+            <div class="col-12 col-md-4 col-lg-3">
+              <select class="form-select" id="customerType" data-fieldname="customer_type">
+                <option value="DOMESTIC">Domestic</option>
+                <option value="COMMERCIAL">Commercial</option>
+              </select>
             </div>
-            <div class="col-md-auto d-flex align-items-center justify-content-center " style="width: 30px;">
-                +
-            </div>
+          </div>
+        </div>
 
-        <div class="col-md-2">
-            <div class="form-label-group">
+        <!-- Tariff Type Checkboxes -->
+        <div class="col-12">
+          <div class="row align-items-center">
+            <label class="col-12 col-md-3 col-form-label">Tariff Type</label>
+            <div class="col-12 col-md-9">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="fixed_charge_check" data-fieldname="fixed_charge_check">
+                <label class="form-check-label" for="fixed_charge_check">Fixed Charge</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="direct_computation_check" data-fieldname="direct_computation_check">
+                <label class="form-check-label" for="direct_computation_check">Direct Computation</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="indirect_computation_check" data-fieldname="indirect_computation_check">
+                <label class="form-check-label" for="indirect_computation_check">InDirect Computation</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fixed Charge (Visible if Fixed Charge is checked) -->
+        <div class="col-12" id="fixedChargeField" style="display: none;">
+          <div class="row align-items-center">
+            <label class="col-12 col-md-3 col-form-label">Fixed Charge</label>
+            <div class="col-12 col-md-4 col-lg-3">
+              <input type="number" class="form-control" value="0" data-fieldname="fixed_charge">
+            </div>
+          </div>
+        </div>
+
+        <!-- From Unit - To Unit Row (Visible if Direct Computation is checked) -->
+        <div class="col-12" id="fromToUnitField" style="display: none;">
+          <div class="row align-items-center g-3">
+            <div class="col-lg-3 col-md-2">
+              <label class="form-label">Tariff</label>
+            </div>
+            <div class="col-lg-1 col-md-2">
+              <label class="form-label compact-label">From Unit</label>
+            </div>
+            <div class="col-lg-2 col-md-2">
+              <input type="number" class="form-control readonly-control" value="0" data-fieldname="from_unit" readonly>
+            </div>
+            <div class="col-lg-1 col-md-2">
+              <label class="form-label">To Unit</label>
+            </div>
+            <div class="col-lg-2 col-md-2">
+              <input type="number" class="form-control" data-fieldname="to_unit">
+            </div>
+            <div class="col-lg-1 col-md-2"></div>
+            <div class="col-lg-1 col-md-2"></div>
+          </div>
+        </div>
+
+        <!-- Tariff Row (Visible if Direct Computation is checked) -->
+        <div class="container mt-4" id="tariffField" style="display: none;">
+          <div class="row align-items-center g-3">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-md-2 basic-amount-column">
+              <div class="form-label-group">
+                <input type="number" class="form-control" data-fieldname="basic_amount">
+                <div class="form-hint text-muted">Basic Amount</div>
+              </div>
+            </div>
+            <div class="col-md-auto d-flex align-items-center justify-content-center" style="width: 30px;">
+              +
+            </div>
+            <div class="col-md-2">
+              <div class="form-label-group">
                 <input type="number" class="form-control" data-fieldname="tariff">
                 <div class="form-hint text-muted">Amount</div>
+              </div>
             </div>
-        </div>
-        <div class="col-md-auto d-flex align-items-center justify-content-center" style="width: 30px;">
-            /
-        </div>
-        <div class="col-md-2">
-            <div class="form-label-group">
+            <div class="col-md-auto d-flex align-items-center justify-content-center" style="width: 30px;">
+              /
+            </div>
+            <div class="col-md-2">
+              <div class="form-label-group">
                 <input type="number" class="form-control" data-fieldname="per_unit">
                 <div class="form-hint text-muted">Unit</div>
+              </div>
             </div>
+          </div>
         </div>
+
+        <!-- Overdue Fine Row -->
+        <div class="col-12">
+          <div class="row align-items-center">
+            <label class="col-12 col-md-3 col-form-label">Fixed Fine after Due Date</label>
+            <div class="col-12 col-md-4 col-lg-3">
+              <input type="number" class="form-control" data-fieldname="overdue_fine">
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="col-12 d-flex justify-content-end">
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <button class="btn btn-sm btn-dark rounded-3" onclick="addTariffRow()">+ Add</button>
+            <!-- Delete only removes the last row -->
+            <button class="btn btn-sm btn-outline-danger rounded-3" onclick="deleteLastTariffRow()">Delete</button>
+            <!-- Clear clears the entire table -->
+            <button class="btn text-secondary" onclick="clearTariffTable()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="mt-4">
+        <div class="table-responsive rounded-4">
+          <table class="table table-modern align-middle">
+            <thead>
+              <tr>
+                <th class="text-center" style="width: 80px">SL No.</th>
+                <th>From Unit</th>
+                <th>To Unit</th>
+                <th>Tariff</th>
+                <th>Per Unit</th>
+                <th>Basic Amount</th>
+                <th>Total Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-                <!-- Overdue Fine Row -->
-                <div class="col-12">
-                    <div class="row align-items-center">
-                        <label class="col-12 col-md-3 col-form-label">Fixed Fine after Due Date</label>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <input type="number" class="form-control" data-fieldname="overdue_fine">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="col-12 d-flex justify-content-end  ">
-                    <div class="d-flex flex-wrap gap-2 mt-3">
-                        <button class="btn btn-sm btn-dark rounded-3" onclick="addTariffRow()">+ Add</button>
-                        <button class="btn btn-sm btn-outline-danger rounded-3" onclick="clearTariffTable()">Delete</button>
-                        <button class="btn text-Secondary" onclick="clearInputs()">Clear</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Table Section -->
-            <div class="mt-4">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="text-center" style="width: 80px">SL No.</th>
-                                <th>From Unit</th>
-                                <th>To Unit</th>
-                                <th>Tariff</th>
-                                <th>Per Unit</th>
-                                <th>Basic Amount</th>
-                                <th>Total Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Table will be populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-let tariffRows = [];
-
-// Function to toggle visibility of fields based on checkboxes
-function toggleFields() {
-    const fixedChargeChecked = document.getElementById('fixed_charge_check').checked;
-    const directComputationCheck = document.getElementById('direct_computation_check').checked;
-
-
-    document.getElementById('fixedChargeField').style.display = fixedChargeChecked ? 'block' : 'none';
-    document.getElementById('fromToUnitField').style.display = directComputationCheck ? 'block' : 'none';
-    document.getElementById('tariffField').style.display = directComputationCheck ? 'block' : 'none';
-}
-
-// Event listeners for checkboxes
-document.getElementById('fixed_charge_check').addEventListener('change', toggleFields);
-document.getElementById('direct_computation_check').addEventListener('change', toggleFields);
-
-document.querySelector('[data-fieldname="basic_amount"]').closest('.col-md-2').style.display = tariffRows.length === 0 ? 'none' : 'block';
-
-function addTariffRow() {
-
-    document.querySelector('[data-fieldname="basic_amount"]').closest('.basic-amount-column').style.display = tariffRows.length === 0 ? 'none' : 'block';
-
-    const fromUnit = parseFloat(document.querySelector('[data-fieldname="from_unit"]').value) || 0;
-    const toUnit = parseFloat(document.querySelector('[data-fieldname="to_unit"]').value) || 0;
-    const tariff = parseFloat(document.querySelector('[data-fieldname="tariff"]').value) || 0;
-    const perUnit = parseFloat(document.querySelector('[data-fieldname="per_unit"]').value) || 0;
-
-    if (toUnit <= fromUnit) {
-    // Create and show Bootstrap alert
-    const alertDiv = document.createElement('div');
-    alertDiv.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
-    alertDiv.style.zIndex = '9999';
-    alertDiv.style.height = '80px';
-    alertDiv.innerHTML = `
-        To Unit must be greater than From Unit
-         <button class="btn btn-sm btn-close position-absolute top-50 end-0 translate-middle-y" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-    document.body.appendChild(alertDiv);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        alertDiv.remove();
-    }, 5000);
-    return;
-}
-
-    const basicAmount = tariffRows.length > 0 ? tariffRows[tariffRows.length - 1].totalAmount : 0;
-    const unitsInRange = toUnit - fromUnit;
-    const tariffAmount = (unitsInRange / perUnit) * tariff;
-    const totalAmount = basicAmount + tariffAmount;
-
-    tariffRows.push({
-        slNo: tariffRows.length + 1,
-        fromUnit,
-        toUnit,
-        tariff,
-        perUnit,
-        basicAmount,
-        totalAmount
-    });
-
-    updateTariffTable();
-    setupNextRow(toUnit, totalAmount);
-    clearInputs();
-}
-
-function updateTariffTable() {
-    const tbody = document.querySelector('table tbody');
-    tbody.innerHTML = '';
-    
-    tariffRows.forEach((row, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class="text-center">${row.slNo}</td>
-            <td>${row.fromUnit}</td>
-            <td>${row.toUnit}</td>
-            <td>${row.tariff.toFixed(2)}</td>
-            <td>${row.perUnit}</td>
-            <td>${row.basicAmount.toFixed(2)}</td>
-           
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-function setupNextRow(previousToUnit, previousTotal) {
-    document.querySelector('[data-fieldname="from_unit"]').value = previousToUnit;
-    document.querySelector('[data-fieldname="basic_amount"]').value = previousTotal.toFixed(2);
-}
-
-function clearInputs() {
-    document.querySelector('[data-fieldname="to_unit"]').value = '';
-    document.querySelector('[data-fieldname="tariff"]').value = '';
-    document.querySelector('[data-fieldname="per_unit"]').value = '';
-}
-
-function clearTariffTable() {
-    tariffRows = [];
-    updateTariffTable();
-    document.querySelector('[data-fieldname="from_unit"]').value = '0';
-    clearInputs();
-}
-
-// Initialize the table
-document.addEventListener('DOMContentLoaded', function() {
-    updateTariffTable();
-});
-</script>
+<script src="/assets/billing_solution/js/tariff.js"></script>
 
 {% endblock %}
 
