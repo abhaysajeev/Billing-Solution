@@ -1,5 +1,1718 @@
 [
  {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-08-19 14:40:33.093455",
+  "module": "GST India",
+  "name": "GST Job Work Stock Movement",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Subcontracting Order",
+  "reference_report": null,
+  "report_name": "GST Job Work Stock Movement",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:45:28.168184",
+  "module": "GST India",
+  "name": "GST Sales Register",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "GST Sales Register",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Sales Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Sales Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:45:47.658452",
+  "module": "GST India",
+  "name": "GST Purchase Register",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "GST Purchase Register",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Purchase Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Purchase Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:44:59.245284",
+  "module": "GST India",
+  "name": "GST Itemised Sales Register",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "GST Itemised Sales Register",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Itemised Sales Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Itemised Sales Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:45:14.325388",
+  "module": "GST India",
+  "name": "GST Itemised Purchase Register",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "GST Itemised Purchase Register",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Itemised Purchase Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Itemised Purchase Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:46:30.974086",
+  "module": "GST India",
+  "name": "GSTR-1",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "GL Entry",
+  "reference_report": null,
+  "report_name": "GSTR-1",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-05-08 18:32:52.251457",
+  "module": "GST India",
+  "name": "HSN-wise-summary of outward supplies",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "HSN-wise-summary of outward supplies",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-28 00:08:08.097494",
+  "module": "Payroll",
+  "name": "Bank Remittance",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Payroll Entry",
+  "reference_report": null,
+  "report_name": "Bank Remittance",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Bank Remittance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-11-16 20:58:59.156949",
+  "module": "Payroll",
+  "name": "Income Tax Deductions",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Income Tax Deductions",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Income Tax Deductions",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Income Tax Deductions",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Income Tax Deductions",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Income Tax Deductions",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-06-26 18:54:19.305763",
+  "module": "Payroll",
+  "name": "Provident Fund Deductions",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Provident Fund Deductions",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-06-26 19:02:26.306348",
+  "module": "Payroll",
+  "name": "Professional Tax Deductions",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Professional Tax Deductions",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-06-16 18:38:23.680185",
+  "module": "Payroll",
+  "name": "Salary Payments via ECS",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Salary Payments via ECS",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Salary Payments via ECS",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Salary Payments via ECS",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-06-16 18:43:43.107246",
+  "module": "Payroll",
+  "name": "Salary Payments Based On Payment Mode",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Salary Payments Based On Payment Mode",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Salary Payments Based On Payment Mode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Salary Payments Based On Payment Mode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Salary Payments Based On Payment Mode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "",
+  "modified": "2022-03-01 15:49:13.912294",
+  "module": "GST India",
+  "name": "e-Invoice Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "e-Invoice Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "e-Invoice Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "e-Invoice Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-06-23 20:11:16.295495",
+  "module": "HR",
+  "name": "Employee Hours Utilization Based On Timesheet",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet",
+  "reference_report": null,
+  "report_name": "Employee Hours Utilization Based On Timesheet",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Hours Utilization Based On Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Hours Utilization Based On Timesheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-06-23 15:50:48.490866",
+  "module": "HR",
+  "name": "Project Profitability",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Timesheet",
+  "reference_report": null,
+  "report_name": "Project Profitability",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   },
+   {
+    "parent": "Project Profitability",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2022-02-23 13:07:30.347861",
+  "module": "Payroll",
+  "name": "Income Tax Computation",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Income Tax Computation",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Income Tax Computation",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Income Tax Computation",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Income Tax Computation",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Income Tax Computation",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-03-30 18:50:42.394262",
+  "module": "HR",
+  "name": "Appraisal Overview",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Appraisal",
+  "reference_report": "",
+  "report_name": "Appraisal Overview",
+  "report_script": "",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Appraisal Overview",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Appraisal Overview",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Appraisal Overview",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Appraisal Overview",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   },
+   {
+    "parent": "Appraisal Overview",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-05-08 12:24:58.886166",
+  "module": "GST India",
+  "name": "Bill of Entry Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Bill of Entry",
+  "reference_report": null,
+  "report_name": "Bill of Entry Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-06-05 14:48:26.693826",
+  "module": "GST India",
+  "name": "GST Balance",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "GL Entry",
+  "reference_report": null,
+  "report_name": "GST Balance",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-07-25 16:35:23.470355",
+  "module": "Audit Trail",
+  "name": "Audit Trail",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Version",
+  "reference_report": null,
+  "report_name": "Audit Trail",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Audit Trail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Audit Trail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Administrator"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "SMC - New",
+  "modified": "2023-07-17 17:06:02.333972",
+  "module": "GST India",
+  "name": "GSTR-3B Details",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "GSTR-3B Details",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-08-04 11:29:44.327488",
+  "module": "HR",
+  "name": "Shift Attendance",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Attendance",
+  "reference_report": null,
+  "report_name": "Shift Attendance",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Shift Attendance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Shift Attendance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Shift Attendance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Shift Attendance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   },
+   {
+    "parent": "Shift Attendance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2023-09-17 16:44:32.575646",
+  "module": "GST India",
+  "name": "GST Advance Detail",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Payment Entry",
+  "reference_report": null,
+  "report_name": "GST Advance Detail",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Advance Detail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Advance Detail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Frappe",
+  "modified": "2024-04-07 14:46:16.056637",
+  "module": "HR",
+  "name": "Leave Ledger",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Leave Ledger Entry",
+  "reference_report": null,
+  "report_name": "Leave Ledger",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Leave Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Leave Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Leave Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Leave Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-11 16:03:18.740603",
+  "module": "GST India",
+  "name": "GST Sales Register Beta",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "GST Sales Register Beta",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Sales Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Sales Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-05-16 22:48:22.767535",
+  "module": "HR",
+  "name": "Vehicle Expenses",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Vehicle",
+  "reference_report": null,
+  "report_name": "Vehicle Expenses",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Vehicle Expenses",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Fleet Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-06-23 19:59:29.747039",
+  "module": "HR",
+  "name": "Unpaid Expense Claim",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Expense Claim",
+  "reference_report": null,
+  "report_name": "Unpaid Expense Claim",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Unpaid Expense Claim",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Unpaid Expense Claim",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Expense Approver"
+   },
+   {
+    "parent": "Unpaid Expense Claim",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-28 00:07:18.576661",
+  "module": "Payroll",
+  "name": "Salary Register",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Salary Slip",
+  "reference_report": null,
+  "report_name": "Salary Register",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Salary Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Salary Register",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2018-02-22 13:33:41.532005",
+  "module": "HR",
+  "name": "Employee Advance Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee Advance",
+  "reference_report": null,
+  "report_name": "Employee Advance Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Advance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Employee Advance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Expense Approver"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2018-06-04 10:44:04.694509",
+  "module": "HR",
+  "name": "Daily Work Summary Replies",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Daily Work Summary",
+  "reference_report": null,
+  "report_name": "Daily Work Summary Replies",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Daily Work Summary Replies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Daily Work Summary Replies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2019-09-06 11:18:06.209397",
+  "module": "HR",
+  "name": "Employee Leave Balance Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Leave Balance Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Leave Balance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Employee Leave Balance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Employee Leave Balance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Leave Balance Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Leave Approver"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-12 13:52:50.631086",
+  "module": "HR",
+  "name": "Employee Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Employee Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2020-05-14 16:28:45.743869",
+  "module": "HR",
+  "name": "Recruitment Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Staffing Plan",
+  "reference_report": null,
+  "report_name": "Recruitment Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Recruitment Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Test",
+  "modified": "2021-12-05 19:47:18.332319",
+  "module": "HR",
+  "name": "Employee Exits",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Exit Interview",
+  "reference_report": null,
+  "report_name": "Employee Exits",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Exits",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Employee Exits",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Employee Exits",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{\"add_total_row\": 0, \"sort_by\": \"Serial No.modified\", \"sort_order\": \"desc\", \"sort_by_next\": null, \"filters\": [[\"Serial No\", \"delivery_document_type\", \"in\", [\"Delivery Note\", \"Sales Invoice\"]], [\"Serial No\", \"warehouse\", \"=\", \"\"]], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"Serial No\"], [\"item_code\", \"Serial No\"], [\"warranty_expiry_date\", \"Serial No\"], [\"warranty_period\", \"Serial No\"], [\"maintenance_status\", \"Serial No\"], [\"purchase_document_no\", \"Serial No\"], [\"purchase_date\", \"Serial No\"], [\"supplier\", \"Serial No\"], [\"supplier_name\", \"Serial No\"], [\"delivery_document_no\", \"Serial No\"], [\"delivery_date\", \"Serial No\"], [\"customer\", \"Serial No\"], [\"customer_name\", \"Serial No\"], [\"item_name\", \"Serial No\"], [\"description\", \"Serial No\"], [\"item_group\", \"Serial No\"], [\"brand\", \"Serial No\"]]}",
+  "letter_head": null,
+  "modified": "2017-02-24 20:01:53.097456",
+  "module": "Stock",
+  "name": "Serial No Warranty Expiry",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Serial No",
+  "reference_report": null,
+  "report_name": "Serial No Warranty Expiry",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Serial No Warranty Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Serial No Warranty Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Serial No Warranty Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:05:17.833885",
+  "module": "HR",
+  "name": "Employees working on a holiday",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Attendance",
+  "reference_report": null,
+  "report_name": "Employees working on a holiday",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employees working on a holiday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Employees working on a holiday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employees working on a holiday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-11-17 13:28:40.669200",
+  "module": "HR",
+  "name": "Employee Leave Balance",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Leave Balance",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Leave Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Leave Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   },
+   {
+    "parent": "Employee Leave Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:18:13.011024",
+  "module": "HR",
+  "name": "Employee Birthday",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Birthday",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Employee Birthday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
+   },
+   {
+    "parent": "Employee Birthday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Birthday",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{\"add_total_row\": 0, \"sort_by\": \"Employee.bank_ac_no\", \"sort_order\": \"desc\", \"sort_by_next\": \"\", \"filters\": [], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"Employee\"], [\"employee_number\", \"Employee\"], [\"date_of_joining\", \"Employee\"], [\"branch\", \"Employee\"], [\"department\", \"Employee\"], [\"designation\", \"Employee\"], [\"gender\", \"Employee\"], [\"status\", \"Employee\"], [\"company\", \"Employee\"], [\"employment_type\", \"Employee\"], [\"reports_to\", \"Employee\"], [\"company_email\", \"Employee\"]]}",
+  "letter_head": null,
+  "modified": "2017-02-24 20:01:38.681441",
+  "module": "HR",
+  "name": "Employee Information",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Information",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Employee Information",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Employee Information",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:16:50.550242",
+  "module": "HR",
+  "name": "Monthly Attendance Sheet",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Attendance",
+  "reference_report": null,
+  "report_name": "Monthly Attendance Sheet",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Monthly Attendance Sheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Monthly Attendance Sheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR User"
+   },
+   {
+    "parent": "Monthly Attendance Sheet",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "HR Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
   "add_total_row": 0,
   "columns": [],
   "disabled": 0,

@@ -153,22 +153,43 @@
   }
   /* Use a pastel light color for header */
   .table-modern thead {
-    background-color: #E0F7FA;
-    color: #333;
+    background-color: #d3d4fb;
+    color: #000000;
   }
   .table-modern th,
   .table-modern td {
     padding: 0.75rem;
   }
   .table-modern tr.selected {
-    background-color: #e2e8f0;
+    background-color: #d3d4fb;
   }
+  .add-button {
+    background-color: #595be8;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 0.95em; /* Relative to parent */
+}
+
+.add-button:hover {
+    background-color: #595be8;
+    transform: scale(1.1);
+    font-size: 1.05em; /* Slightly increase font size */
+}
+
+.add-button:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: none; /* Remove any additional shadow */
+}
+
 </style>
 
 <div class="container-fluid p-3 p-md-4">
   <div class="card shadow-sm rounded-4 mt-3">
-    <div class="card-header d-flex justify-content-between align-items-center p-3 rounded-top-4" style="background-color: #6d65f4;">
-      <h5 class="text-white mb-0">Tariff</h5>
+    <div class="card-header d-flex justify-content-between align-items-center  rounded-top-4" style="background-color: #6366f1;">
+      <h5 class="text-white mt-2">Tariff</h5>
+
       <button class="btn btn-sm btn-outline-light rounded-3" id="saveTariff">Save</button>
     </div>
     
@@ -177,11 +198,10 @@
         <!-- Customer Type -->
         <div class="col-12">
           <div class="row align-items-center">
-            <label class="col-12 col-md-3 col-form-label">Customer Type</label>
+            <label class="col-12 col-md-3 col-form-label">Consumer Type</label>
             <div class="col-12 col-md-4 col-lg-3">
-              <select class="form-select" id="customerType" data-fieldname="customer_type">
-                <option value="DOMESTIC">Domestic</option>
-                <option value="COMMERCIAL">Commercial</option>
+              <select class="form-select" id="consumer_type_dropdown" data-fieldname="consumer_type">
+                <option value="">Select Consumer Type</option>
               </select>
             </div>
           </div>
@@ -201,8 +221,8 @@
                 <label class="form-check-label" for="direct_computation_check">Direct Computation</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="indirect_computation_check" data-fieldname="indirect_computation_check">
-                <label class="form-check-label" for="indirect_computation_check">InDirect Computation</label>
+                <!-- <input class="form-check-input" type="checkbox" id="indirect_computation_check" data-fieldname="indirect_computation_check">
+                <label class="form-check-label" for="indirect_computation_check">InDirect Computation</label> -->
               </div>
             </div>
           </div>
@@ -285,7 +305,7 @@
         <!-- Action Buttons -->
         <div class="col-12 d-flex justify-content-end">
           <div class="d-flex flex-wrap gap-2 mt-3">
-            <button class="btn btn-sm btn-dark rounded-3" onclick="addTariffRow()">+ Add</button>
+            <button class="btn btn-sm rounded-3 text-white add-button" onclick="addTariffRow()">+ Add</button>
             <!-- Delete only removes the last row -->
             <button class="btn btn-sm btn-outline-danger rounded-3" onclick="deleteLastTariffRow()">Delete</button>
             <!-- Clear clears the entire table -->
@@ -319,7 +339,186 @@
   </div>
 </div>
 
-<script src="/assets/billing_solution/js/tariff.js"></script>
+<script>
+
+let tariffRows = [];
+
+// Toggle fields based on checkboxes
+function toggleFields() {
+  const fixedChargeChecked = document.getElementById('fixed_charge_check').checked;
+  const directComputationCheck = document.getElementById('direct_computation_check').checked;
+
+  document.getElementById('fixedChargeField').style.display = fixedChargeChecked ? 'block' : 'none';
+  document.getElementById('fromToUnitField').style.display = directComputationCheck ? 'block' : 'none';
+  document.getElementById('tariffField').style.display = directComputationCheck ? 'block' : 'none';
+}
+
+// Event listeners for checkboxes
+document.getElementById('fixed_charge_check').addEventListener('change', toggleFields);
+document.getElementById('direct_computation_check').addEventListener('change', toggleFields);
+
+// Initially hide basic amount if no tariff rows exist
+document.querySelector('[data-fieldname="basic_amount"]').closest('.col-md-2').style.display = tariffRows.length === 0 ? 'none' : 'block';
+
+function addTariffRow() {
+  // Ensure basic amount field is visible once tariff rows are present
+  document.querySelector('[data-fieldname="basic_amount"]').closest('.basic-amount-column').style.display = tariffRows.length === 0 ? 'none' : 'block';
+
+  const fromUnit = parseFloat(document.querySelector('[data-fieldname="from_unit"]').value) || 0;
+  const toUnit = parseFloat(document.querySelector('[data-fieldname="to_unit"]').value) || 0;
+  const tariff = parseFloat(document.querySelector('[data-fieldname="tariff"]').value) || 0;
+  const perUnit = parseFloat(document.querySelector('[data-fieldname="per_unit"]').value) || 0;
+
+  if (toUnit <= fromUnit) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+    alertDiv.style.zIndex = '9999';
+    alertDiv.style.height = '80px';
+    alertDiv.innerHTML = `
+      To Unit must be greater than From Unit
+      <button class="btn btn-sm btn-close position-absolute top-50 end-0 translate-middle-y" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 5000);
+    return;
+  }
+
+  const basicAmount = tariffRows.length > 0 ? tariffRows[tariffRows.length - 1].totalAmount : 0;
+  const unitsInRange = toUnit - fromUnit;
+  const tariffAmount = (unitsInRange / perUnit) * tariff;
+  const totalAmount = basicAmount + tariffAmount;
+
+  tariffRows.push({
+    slNo: tariffRows.length + 1,
+    fromUnit,
+    toUnit,
+    tariff,
+    perUnit,
+    basicAmount,
+    totalAmount
+  });
+
+  updateTariffTable();
+  setupNextRow(toUnit, totalAmount);
+  clearInputs();
+}
+
+
+  
+
+function updateTariffTable() {
+  const tbody = document.querySelector('table tbody');
+  tbody.innerHTML = '';
+
+  tariffRows.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="text-center">${row.slNo}</td>
+      <td>${row.fromUnit}</td>
+      <td>${row.toUnit}</td>
+      <td>${row.tariff.toFixed(2)}</td>
+      <td>${row.perUnit}</td>
+      <td>${row.basicAmount.toFixed(2)}</td>
+      <td>${row.totalAmount.toFixed(2)}</td>
+    `;
+
+    // Attach click event to each row for selection/deselection
+    tr.addEventListener('click', () => {
+      // If the row is already selected, deselect it and reset tariff section
+      if(tr.classList.contains('selected')){
+        tr.classList.remove('selected');
+        resetTariffSection();
+      } else {
+        // Remove selected class from all rows
+        document.querySelectorAll('table tbody tr').forEach(tr => tr.classList.remove('selected'));
+        // Mark the clicked row as selected and populate form fields
+        tr.classList.add('selected');
+        document.querySelector('[data-fieldname="from_unit"]').value = row.fromUnit;
+        document.querySelector('[data-fieldname="to_unit"]').value = row.toUnit;
+        document.querySelector('[data-fieldname="tariff"]').value = row.tariff;
+        document.querySelector('[data-fieldname="per_unit"]').value = row.perUnit;
+        document.querySelector('[data-fieldname="basic_amount"]').value = row.basicAmount.toFixed(2);
+      }
+    });
+
+    tbody.appendChild(tr);
+  });
+}
+
+function setupNextRow(previousToUnit, previousTotal) {
+  document.querySelector('[data-fieldname="from_unit"]').value = previousToUnit;
+  document.querySelector('[data-fieldname="basic_amount"]').value = previousTotal.toFixed(2);
+}
+
+function clearInputs() {
+  document.querySelector('[data-fieldname="to_unit"]').value = '';
+  document.querySelector('[data-fieldname="tariff"]').value = '';
+  document.querySelector('[data-fieldname="per_unit"]').value = '';
+}
+
+// Resets the tariff section to the default state (last row's values or defaults)
+function resetTariffSection() {
+  if(tariffRows.length > 0) {
+    const lastRow = tariffRows[tariffRows.length - 1];
+    document.querySelector('[data-fieldname="from_unit"]').value = lastRow.toUnit;
+    document.querySelector('[data-fieldname="basic_amount"]').value = lastRow.totalAmount.toFixed(2);
+  } else {
+    document.querySelector('[data-fieldname="from_unit"]').value = '0';
+    document.querySelector('[data-fieldname="basic_amount"]').value = '0';
+  }
+  clearInputs();
+}
+
+// Deletes only the last row in the tariffRows array
+function deleteLastTariffRow() {
+  if (tariffRows.length === 0) return;
+  tariffRows.pop();
+  updateTariffTable();
+  if (tariffRows.length > 0) {
+    const lastRow = tariffRows[tariffRows.length - 1];
+    document.querySelector('[data-fieldname="from_unit"]').value = lastRow.toUnit;
+    document.querySelector('[data-fieldname="basic_amount"]').value = lastRow.totalAmount.toFixed(2);
+  } else {
+    document.querySelector('[data-fieldname="from_unit"]').value = '0';
+    document.querySelector('[data-fieldname="basic_amount"]').value = '0';
+  }
+  clearInputs();
+}
+
+// Clears the entire tariff table
+function clearTariffTable() {
+  tariffRows = [];
+  updateTariffTable();
+  document.querySelector('[data-fieldname="from_unit"]').value = '0';
+  document.querySelector('[data-fieldname="basic_amount"]').value = '0';
+  clearInputs();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  populateConsumerTypeDropdown();
+});
+
+function populateConsumerTypeDropdown() {
+  fetch('/api/method/billing_solution.services.consumer.get_consumer_type_values')
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        const dropdown = document.getElementById('consumer_type_dropdown');
+        dropdown.innerHTML = '<option value="">Select Consumer Type</option>';
+        data.message.forEach(function(consumer_type) {
+          const option = document.createElement("option");
+          option.value = consumer_type;
+          option.text = consumer_type;
+          dropdown.appendChild(option);
+        });
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+</script>
 
 {% endblock %}
 
