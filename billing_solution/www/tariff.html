@@ -448,7 +448,8 @@ function updateTariffTable() {
 }
 
 function setupNextRow(previousToUnit, previousTotal) {
-  document.querySelector('[data-fieldname="from_unit"]').value = previousToUnit;
+  // Set the next row's 'from_unit' to be previous 'to_unit' plus one.
+  document.querySelector('[data-fieldname="from_unit"]').value = previousToUnit + 1;
   document.querySelector('[data-fieldname="basic_amount"]').value = previousTotal.toFixed(2);
 }
 
@@ -517,6 +518,150 @@ function populateConsumerTypeDropdown() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+function saveTariffData() {
+    const consumerType = document.getElementById('consumer_type_dropdown').value;
+    if (!consumerType) {
+        showAlert('Please select a consumer type', 'error');
+        return;
+    }
+
+    const data = {
+        consumer_type: consumerType,
+        fixed_charge_enabled: document.getElementById('fixed_charge_check').checked,
+        direct_computation_enabled: document.getElementById('direct_computation_check').checked,
+        fixed_charge: document.querySelector('[data-fieldname="fixed_charge"]').value,
+        overdue_fine: document.querySelector('[data-fieldname="overdue_fine"]').value,
+        tariff_rows: JSON.stringify(tariffRows)
+    };
+
+    // Add CSRF token to headers
+    fetch('/api/method/billing_solution.services.tariff_api.save_tariff', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Frappe-CSRF-Token': frappe.csrf_token  // Add this line
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.message && data.message.status === 'success') {
+            showAlert('Tariff data saved successfully', 'success');
+        } else {
+            showAlert(data.message?.message || 'Error saving tariff data', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error saving tariff data:', error);
+        showAlert('Error saving tariff data', 'error');
+    });
+}
+document.getElementById('consumer_type_dropdown').addEventListener('change', function(e) {
+    const selectedType = e.target.value;
+    if (selectedType) {
+        fetchTariffData(selectedType);
+    } else {
+        resetForm();
+    }
+});
+
+document.getElementById('saveTariff').addEventListener('click', saveTariffData);
+
+function fetchTariffData(consumerType) {
+    fetch('/api/method/billing_solution.services.tariff_api.get_tariff', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Frappe-CSRF-Token': frappe.csrf_token  // Add this line
+        },
+        body: JSON.stringify({
+            consumer_type: consumerType
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.message && data.message.status === 'success' && data.message.data) {
+            populateForm(data.message.data);
+        } else {
+            resetForm();
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching tariff data:', error);
+        showAlert('Error fetching tariff data', 'error');
+    });
+}
+
+function populateForm(data) {
+    // Set checkbox states and trigger their change events
+    document.getElementById('fixed_charge_check').checked = data.fixed_charge_check;
+    document.getElementById('direct_computation_check').checked = data.direct_computation_check;
+    toggleFields();
+
+    // Set input values
+    document.querySelector('[data-fieldname="fixed_charge"]').value = data.fixed_charge;
+    document.querySelector('[data-fieldname="overdue_fine"]').value = data.overdue_fine;
+
+    // Clear existing tariff rows and populate with fetched data
+    tariffRows = [];
+    data.tariff_rows.forEach(row => {
+        tariffRows.push({
+            slNo: tariffRows.length + 1,
+            fromUnit: parseFloat(row.fromUnit) || 0,
+            toUnit: parseFloat(row.toUnit) || 0,
+            tariff: parseFloat(row.tariff) || 0,        // Convert tariff to a number
+            perUnit: parseFloat(row.perUnit) || 0,
+            basicAmount: parseFloat(row.basicAmount) || 0,
+            totalAmount: parseFloat(row.totalAmount) || 0
+        });
+    });
+
+    updateTariffTable();
+    if (tariffRows.length > 0) {
+        const lastRow = tariffRows[tariffRows.length - 1];
+        setupNextRow(lastRow.toUnit, lastRow.totalAmount);
+    }
+}
+
+
+function resetForm() {
+    document.getElementById('fixed_charge_check').checked = false;
+    document.getElementById('direct_computation_check').checked = false;
+    toggleFields();
+    
+    document.querySelector('[data-fieldname="fixed_charge"]').value = '';
+    document.querySelector('[data-fieldname="overdue_fine"]').value = '';
+    
+    tariffRows = [];
+    updateTariffTable();
+    document.querySelector('[data-fieldname="from_unit"]').value = '0';
+    document.querySelector('[data-fieldname="basic_amount"]').value = '0';
+    clearInputs();
+}
+
+function showAlert(message, type = 'success') {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+    alertDiv.style.zIndex = '9999';
+    alertDiv.innerHTML = `
+        ${message}
+        <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 5000);
+}
+
 
 </script>
 
